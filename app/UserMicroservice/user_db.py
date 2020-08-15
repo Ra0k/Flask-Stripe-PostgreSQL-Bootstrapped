@@ -27,7 +27,7 @@ class UserAccess():
     def create_user(self, email, password, name):
         try:
             # Hash the password (store only the hash)
-            pw_hash = generate_password_hash(password, 10)
+            pw_hash = generate_password_hash(password, 10).decode('utf8')
 
             # Save user in database
             new_user = self.User(name=name, email=email, password_hash=pw_hash)

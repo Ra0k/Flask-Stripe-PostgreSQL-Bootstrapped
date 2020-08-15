@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship,backref
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     email = Column(String(120), unique=True, nullable=False)
     password_hash = Column(String(256), unique=False, nullable=False)

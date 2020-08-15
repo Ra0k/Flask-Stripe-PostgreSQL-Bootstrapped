@@ -3,16 +3,20 @@ DEBUG=True
 
 if MODE == 'Testing':
     # For MacOS, this fixes an issue where you can't reach other endpoints on localhost
-    MYSQL_HOST='host.docker.internal'
+    DB_HOST='host.docker.internal'
     BASE_URL='host.docker.internal'
 else:
-    MYSQL_HOST='localhost'
+    DB_HOST='localhost'
     BASE_URL='localhost'
 
-MYSQL_PORT='5001'
-MYSQL_USER="root"
-MYSQL_PASSWORD="rootpw"
-MYSQL_DB_NAME="NotificationDb"
+DB_PORT='5432'
+DB_USER="saas_dev"
+DB_PASSWORD="12345678"
+DB_NAME="saas_database"
+
+# Make database connection strings
+CONN_STR = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}"
+CONN_STR_W_DB = f"{CONN_STR}/{DB_NAME}"
 
 TRIAL_LENGTH_DAYS=1
 SQLALCHEMY_TRACK_MODIFICATIONS=False
